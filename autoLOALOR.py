@@ -36,7 +36,7 @@ def docx_replace(file, values, output_filename, directory):
     for k, v in values.items():
         for paragraph in document.paragraphs:
             if k in paragraph.text:
-                paragraph.text = v
+                paragraph.text = paragraph.text.replace(k, str(v))
     
     output_file = Path(directory) / f"{output_filename}.docx"
     document.save(output_file)
